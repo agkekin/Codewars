@@ -5,8 +5,6 @@ def solution(number):
             result.append(i)
     print(result)
 
-
-
     return sum(result)
 
 
