@@ -13,18 +13,31 @@ Vasya - Clerk
 момент счетами. В противном случае верните NO.
 """
 
+
 def tickets(people):
-    Vasya = 0
+    money_Vasya = 0
     for i in people:
-        n += 1
-        if i > Vasya:
-            return "No"
+        if i == 25:
+            money_Vasya = money_Vasya + i
+            continue
+        elif i > 25:
+            if money_Vasya >= i:
+                money_Vasya = money_Vasya - (i-25)
+            print("money_Vasya = ", money_Vasya)
+            print("i = ", i)
+    if money_Vasya > 0:
+        print("Yes")
+        return "Yes"
+    else:
+        print("No")
+        return "No"
 
 
 
     return "?"
 
+
 if __name__ == '__main__':
-    assert tickets([25, 25, 50]) == "Yes"
-    assert tickets([25, 100]) == "No"
-    assert tickets([25, 25, 50, 50, 100])  == "No"
+    assert tickets ( [25, 25, 50] ) == "Yes"
+    assert tickets ( [25, 100] ) == "No"
+    assert tickets ( [25, 25, 50, 50, 100] ) == "No"
