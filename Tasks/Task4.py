@@ -16,28 +16,41 @@ Vasya - Clerk
 
 def tickets(people):
     money_Vasya = 0
+
+    rub_25 = 0
+    rub_50 = 0
+    rub_100 = 0
+
     for i in people:
         if i == 25:
+            rub_25 = rub_25 + i
             money_Vasya = money_Vasya + i
             continue
-        elif i > 25:
+        if i == 50:
+            rub_50 = rub_50 + i
             if money_Vasya >= i:
-                money_Vasya = money_Vasya - (i-25)
-            print("money_Vasya = ", money_Vasya)
-            print("i = ", i)
-    if money_Vasya > 0:
-        print("Yes")
-        return "Yes"
-    else:
-        print("No")
-        return "No"
-
-
-
-    return "?"
-
+                money_Vasya = money_Vasya - (i - 25)
+                money_Vasya = money_Vasya + i
+                rub_25 = rub_25 - 25
+                if rub_25 < 0:
+                    return "NO"
+        if i == 100:
+            rub_100 = rub_100 + i
+            if money_Vasya >= i:
+                money_Vasya = money_Vasya - (i - 25)
+                money_Vasya = money_Vasya + i
+                rub_25 = rub_25 - 25
+                if rub_25 < 0:
+                    return "NO"
+        else:
+                return "NO"
+    return "YES"
 
 if __name__ == '__main__':
-    assert tickets ( [25, 25, 50] ) == "Yes"
-    assert tickets ( [25, 100] ) == "No"
-    assert tickets ( [25, 25, 50, 50, 100] ) == "No"
+    assert tickets ( [25, 25, 50] ) == "YES"
+    # assert tickets ( [25, 100] ) == "NO"
+    # assert tickets ( [25, 25, 50, 50, 100] ) == "NO"
+    # assert tickets ( [25, 25, 25, 25, 50, 100, 50] ) == "YES"
+    # assert tickets ( [25, 25, 25, 25, 25, 25, 25, 50, 50, 50, 100, 100, 100, 100] ) == "NO"
+
+
