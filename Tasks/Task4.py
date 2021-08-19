@@ -31,26 +31,37 @@ def tickets(people):
             if money_Vasya >= i:
                 money_Vasya = money_Vasya - (i - 25)
                 money_Vasya = money_Vasya + i
-                rub_25 = rub_25 - 25
-                if rub_25 < 0:
+                if rub_25 >= 25:
+                    rub_25 = rub_25 - 25
+                else:
                     return "NO"
+            else:
+                return "NO"
         if i == 100:
             rub_100 = rub_100 + i
             if money_Vasya >= i:
-                money_Vasya = money_Vasya - (i - 25)
+                money_Vasya = money_Vasya - (i - 75)
                 money_Vasya = money_Vasya + i
-                rub_25 = rub_25 - 25
-                if rub_25 < 0:
+                if rub_50 >= 50:
+                    rub_50 = rub_50 - 50
+                    if rub_25 >= 25:
+                        rub_25 = rub_25 - 25
+                    else:
+                        return "NO"
+                else:
                     return "NO"
-        else:
+            else:
                 return "NO"
+
     return "YES"
 
 if __name__ == '__main__':
-    assert tickets ( [25, 25, 50] ) == "YES"
+    # assert tickets ( [25, 25, 50] ) == "YES"
     # assert tickets ( [25, 100] ) == "NO"
     # assert tickets ( [25, 25, 50, 50, 100] ) == "NO"
     # assert tickets ( [25, 25, 25, 25, 50, 100, 50] ) == "YES"
     # assert tickets ( [25, 25, 25, 25, 25, 25, 25, 50, 50, 50, 100, 100, 100, 100] ) == "NO"
+    assert tickets ( [50, 50, 50, 50, 50, 50, 50, 50, 50, 50] ) == "NO"
+
 
 
