@@ -49,48 +49,45 @@ def rgb(r, g, b):
     B = (hex(b).split("x")[-1].upper())
     # print(B)
 
-    my_list = ss = []
+    my_listR = []
+    my_listG = []
+    my_listB = []
+    my_list =  []
 
-    my_list.append(R)
-    my_list.append(G)
-    my_list.append(B)
-    # print(my_list)
+    vowels = set('0123456789')
 
-    my_str = "".join(my_list)
-    # print(my_str)
+    my_listR.append(R)
+    for x in my_listR:
+        if x in vowels:
+            my_listR = "0" + x
 
-    for i in my_str:
-        if i == "0":
-            ss = my_str.replace('0', '00')
-        if i == "1":
-            ss = my_str.replace('1', '01')
-        if i == "2":
-            ss = my_str.replace('2', '02')
-        if i == "3":
-            ss = my_str.replace('3', '03')
-        if i == "4":
-            ss = my_str.replace('4', '04')
-        if i == "5":
-            ss = my_str.replace('5', '05')
-        if i == "6":
-            ss = my_str.replace('6', '06')
-        if i == "7":
-            ss = my_str.replace('7', '07')
-        if i == "8":
-            ss = my_str.replace('8', '08')
-        if i == "9":
-            ss = my_str.replace('9', '09')
 
-    ss = "".join(ss)
+    my_listG.append(G)
+    for x in my_listG:
+        if x in vowels:
+            my_listG = "0" + x
 
-    return ss
+    my_listB.append(B)
+    for x in my_listB:
+        if x in vowels:
+            my_listB = "0" + x
+
+    my_strR = "".join(my_listR)
+    my_strG = "".join(my_listG)
+    my_strB = "".join(my_listB)
+
+    my_str = my_strR + my_strG + my_strB
+
+    # print("my_str = ", my_str)
+
+    return my_str
 
 
 if __name__ == '__main__':
     assert rgb(255, 255, 255) == "FFFFFF"
     assert rgb(255, 255, 300) == "FFFFFF"
     assert rgb(0, 0, 0) == "000000"
-    # assert rgb(148, 0, 211) == "9400D3"
+    assert rgb(148, 0, 211) == "9400D3"
     assert rgb(1, 2, 3) == "010203"
     assert rgb(254, 253, 252) == "FEFDFC"
     assert rgb(-20, 275, 125) == "00FF7D"
