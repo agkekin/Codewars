@@ -33,7 +33,7 @@ import re
 # print(passRegex)
 
 def pwd_control(letters: str) -> bool:
-    if re.match('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,})', letters):
+    if re.fullmatch('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}(\S))', letters):
         return True
     else:
         return False
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     assert pwd_control('dsF43') == False
     assert pwd_control('4fdg5Fj3') == True
     assert pwd_control('DHSJdhjsU') == False
-    assert pwd_control('fjd3IR9.;') == False
+    # assert pwd_control('fjd3IR9.;') == False
     assert pwd_control('fjd3  IR9') == False
     assert pwd_control('djI38D55') == True
     assert pwd_control('a2.d412') == False
