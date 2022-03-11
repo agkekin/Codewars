@@ -23,27 +23,38 @@ Valid passwords will only be alphanumeric characters.
 
 """
 
-# regex = ""
-import string
+import re
 
+
+# letters = "fjd3IR9 ghdfj32 DSJKHD23 dsF43 4fdg5Fj3 DHSJdhjsU fjd3IR9.; fjd3  IR9 djI38D55 a2.d412 JHD5FJ53 !fdjn345 jfkdfj3j 123 abc 123abcABC ABC123abc Password123"
+#
+# passRegex = re.match('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})', letters)
+#
+# print(passRegex)
 
 def pwd_control(letters: str) -> bool:
-    digits = string.digits
-    lowers = string.ascii_lowercase
-    uppers = string.ascii_uppercase
-    whitespace = string.whitespace
-    punctuation = string.punctuation
-
-
-
-    if len(letters) < 6:
-        return False
-    if any(e in digits for e in letters) and any(e in lowers for e in letters) and any(
-            e in uppers for e in letters) and not any(e in whitespace for e in letters) and not any(e in punctuation for e in letters):
+    if re.match('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,})', letters):
         return True
     else:
         return False
 
+# import string
+# def pwd_control(letters: str) -> bool:
+#     digits = string.digits
+#     lowers = string.ascii_lowercase
+#     uppers = string.ascii_uppercase
+#     whitespace = string.whitespace
+#     punctuation = string.punctuation
+#
+#
+#
+#     if len(letters) < 6:
+#         return False
+#     if any(e in digits for e in letters) and any(e in lowers for e in letters) and any(
+#             e in uppers for e in letters) and not any(e in whitespace for e in letters) and not any(e in punctuation for e in letters):
+#         return True
+#     else:
+#         return False
 
 if __name__ == '__main__':
     assert pwd_control('fjd3IR9') == True
