@@ -25,19 +25,22 @@ Valid passwords will only be alphanumeric characters.
 
 import re
 
-
-# letters = "fjd3IR9 ghdfj32 DSJKHD23 dsF43 4fdg5Fj3 DHSJdhjsU fjd3IR9.; fjd3  IR9 djI38D55 a2.d412 JHD5FJ53 !fdjn345 jfkdfj3j 123 abc 123abcABC ABC123abc Password123"
-#
-# passRegex = re.match('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})', letters)
-#
-# print(passRegex)
-
 def pwd_control(letters: str) -> bool:
-    if re.fullmatch('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}(\S))', letters):
+    if re.fullmatch('^((?!.*\s)(?!.*\W)(?!.*[_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$)', letters):
         return True
     else:
         return False
 
+
+# from re import search
+#
+# regex = "^((?!.*\s)(?!.*\W)(?!.*[_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$)"
+#
+# def pwd_control(letters: str) -> bool:
+#     if re.fullmatch(regex, letters):
+#         return True
+#     else:
+#         return False
 # import string
 # def pwd_control(letters: str) -> bool:
 #     digits = string.digits
@@ -63,7 +66,7 @@ if __name__ == '__main__':
     assert pwd_control('dsF43') == False
     assert pwd_control('4fdg5Fj3') == True
     assert pwd_control('DHSJdhjsU') == False
-    # assert pwd_control('fjd3IR9.;') == False
+    assert pwd_control('fjd3IR9.;') == False
     assert pwd_control('fjd3  IR9') == False
     assert pwd_control('djI38D55') == True
     assert pwd_control('a2.d412') == False
