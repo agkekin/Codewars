@@ -1,24 +1,18 @@
-def string_clean(s):
-
-    if len(s) == 0:
-        return ''
-
-    for i in s:
-        if i.isdigit():
-            s = s.replace(i, '')
-    print('res', s)
-    return s
+def digitize(n):
+    n1 = ''
+    res = []
+    n1 = str(n)[::-1]
+    for i in n1:
+        res.append(int(i))
+        print(res)
+    return n1
 
 
 if __name__ == '__main__':
-    assert string_clean("") == ""
-    assert string_clean("! !") == "! !"
-    assert string_clean("123456789") == ""
-    assert string_clean("(E3at m2e2!!)") == "(Eat me!!)"
-    assert string_clean("Dsa32 cdsc34232 csa!!! 1I 4Am cool!") == "Dsa cdsc csa!!! I Am cool!"
-    assert string_clean("A1 A1! AAA   3J4K5L@!!!") == "A A! AAA   JKL@!!!"
-    assert string_clean("Adgre2321 A1sad! A2A3A4 fv3fdv3J544K5L@") == "Adgre Asad! AAA fvfdvJKL@"
-    assert string_clean("Ad2dsad3ds21 A  1$$s122ad! A2A3Ae24 f44K5L@222222 ") == "Addsadds A  $$sad! AAAe fKL@ "
-    assert string_clean("33333Ad2dsad3ds21 A3333  1$$s122a!d! A2!A!3Ae$24 f2##222 ") == "Addsadds A  $$sa!d! A!A!Ae$ f## "
-    assert string_clean("My \"me3ssy\" d8ata issues2! Will1 th4ey ever, e3ver be3 so0lved?") == "My \"messy\" data issues! Will they ever, ever be solved?"
-    assert string_clean("Wh7y can't we3 bu1y the goo0d software3? #cheapskates3") == "Why can't we buy the good software? #cheapskates"
+    assert digitize(35231) == [1, 3, 2, 5, 3]
+    assert digitize(0) == [0]
+    assert digitize(23582357) == [7, 5, 3, 2, 8, 5, 3, 2]
+    assert digitize(984764738) == [8, 3, 7, 4, 6, 7, 4, 8, 9]
+    assert digitize(45762893920) == [0, 2, 9, 3, 9, 8, 2, 6, 7, 5, 4]
+    assert digitize(548702838394) == [4, 9, 3, 8, 3, 8, 2, 0, 7, 8, 4, 5]
+
