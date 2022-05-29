@@ -14,14 +14,12 @@ def prescribe(d, a, b):
                 res = max(res, dose)
                 print('res =', res)
 
-        print("\n")
-
     return res
 
 
 if __name__ == '__main__':
     assert prescribe(99, 25, 60) == 85
-    # assert prescribe(180, 25, 60) == 180
-    # assert prescribe(2575, 400, 150) == 2550
-    # assert prescribe(4540, 9, 15) == 4539
-    #assert prescribe(5424, 83, 98) == 5424
+    assert prescribe(180, 25, 60) == 180
+    assert prescribe(2575, 400, 150) == 2550
+    assert prescribe(4540, 9, 15) == 4539
+    assert prescribe(5424, 83, 98) == 5424
