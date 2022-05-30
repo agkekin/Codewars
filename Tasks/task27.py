@@ -1,32 +1,11 @@
 def animals(heads, legs):
-    a = []
+    cows = int(legs / 4 - (heads - legs / 4))
+    chickens = int(heads - cows)
 
-    if heads < 0 or legs < 0:
+    if cows < 0 or chickens < 0 or heads < 0 or legs < 0 or legs % 2 != 0:
         return 'No solutions'
 
-    if legs % 2 != 0:
-        return 'No solutions'
-
-    elif heads == 0 and legs == 0:
-        a = [0, 0]
-        res = tuple(a)
-        return res
-
-    else:
-
-        cows = int(legs / 4 - (heads - legs / 4))
-        chickens = int(heads - cows)
-        print(heads, legs, ' = ', chickens,cows)
-
-        if cows < 0 or chickens < 0:
-            return 'No solutions'
-
-        a.append(chickens)
-        a.append(cows)
-        res = tuple(a)
-
-    print(res)
-    return res
+    return (chickens,cows)
 
 
 if __name__ == '__main__':
