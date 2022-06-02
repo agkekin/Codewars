@@ -1,11 +1,11 @@
 def animals(heads, legs):
-    cows = int(legs / 4 - (heads - legs / 4))
-    chickens = int(heads - cows)
+    cows = (legs / 4 - (heads - legs / 4))
+    chickens = (heads - (legs / 4 - (heads - legs / 4)))
 
-    if cows < 0 or chickens < 0 or heads < 0 or legs < 0 or legs % 2 != 0:
+    if ows < 0 or chickens < 0 or heads < 0 or legs < 0 or legs % 2 != 0:
         return 'No solutions'
 
-    return (chickens,cows)
+    return ((heads - (legs / 4 - (heads - legs / 4))),(legs / 4 - (heads - legs / 4)) )
 
 
 if __name__ == '__main__':
