@@ -1,5 +1,15 @@
-def reverse_seq(n):
-    return [x for x in reversed(range(1, n+1))]
+def bin_to_decimal(inp):
+    return int(inp, 2)
+
+
+
 
 if __name__ == '__main__':
-    assert reverse_seq(5) == [5,4,3,2,1]
+    assert bin_to_decimal ("0") == 0
+    assert bin_to_decimal ("1") == 1
+    assert bin_to_decimal ("10") == 2
+    assert bin_to_decimal ("11") == 3
+    assert bin_to_decimal ("101010") == 42
+    assert bin_to_decimal ("1001001") == 73
+
+
