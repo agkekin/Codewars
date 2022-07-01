@@ -1,31 +1,56 @@
-def strip_comments(strng, markers):
-    # print(strng)
-    ll = ''
-    mlist = []
-    mstr = ''
-    # mstr = strng[strng.find(markers[0]):strng.find(markers[1])]
-    # strng = strng.replace(mstr,'')
-    # print(strng)
-    k = 0
+def recurs(a, b):
+    my_str = ''
+    tt = []
 
-    for i in strng:
-        k += 1
-        if i != markers[0]:
-            mstr += i
+    for i in a:
+        for j in i:
+            if j != b:
+                my_str += j
+            else:
+                break
+
+        if len(my_str) > 1:
+            if my_str[-1] == ' ':
+                tt.append(my_str[0:len(my_str)-1])
+            else:
+                tt.append(my_str)
+
         else:
-            break
-    # print(mstr)
-    print(strng[k::])
+            tt.append(my_str)
 
-    for i in strng[k::]:
-        if i == "\\":
-            mstr += i
+        my_str = ''
 
-    print(mstr)
+    return tt
 
-    return strng
+def strip_comments(string, markers):
+
+    lines = string.splitlines()
+    print('lines =', lines)
+
+    tt = []
+    tt1 = []
+    my_str = ''
+
+    if not markers:
+        return string
+
+    for x in markers:
+        print(x)
+        print(recurs(recurs(lines, x),x))
+
+        ss = '\n'.join(recurs(lines, x))
+    print('ss =', ss)
+
+    return ss
+
 
 if __name__ == '__main__':
     assert strip_comments('apples, pears # and bananas\ngrapes\nbananas !apples', ['#', '!']) == \
            'apples, pears\ngrapes\nbananas'
+    # assert strip_comments('apples, pears # and bananas\ngrapes\navocado @apples',['@', '!']) == \
+    #        'apples, pears # and bananas\ngrapes\navocado'
 
+    # assert strip_comments('#', ['#', '!']) == ' '
+    # assert strip_comments('§', ['#', '§']) == '\n'
+    # assert strip_comments('apples, pears  # and bananas\ngrapes\nbananas !apples', []) == \
+    #        'apples, pears  # and bananas\ngrapes\nbananas !apples'
