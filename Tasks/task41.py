@@ -25,7 +25,7 @@
 def strip_comments(string, markers):
 
     lines = string.splitlines()
-    print('lines =', lines)
+    # print('lines =', lines)
 
     tt = []
     tt1 = []
@@ -38,35 +38,50 @@ def strip_comments(string, markers):
         return string
 
     for x in markers:
-        print('\n')
 
         print('x = ', x)
 
-        for i in lines:
-            print('*************************************')
-            print('i = ', i)
+        if not x:
+            return string
 
-            if i.find(x) > 0:
-                print('1')
-                i = i[:i.find(x)]
-            print('my_str = ', i)
+        for i in range(len(lines)):
+            print('lines', lines)
 
-            if i[-1] == ' ':
-                i = i[0:len(i) - 1]
+            if lines[i].find(x) != -1:
+                lines[i] = lines[i][:lines[i].find(x)]
 
-            tt.append(i)
-            print('tt =', tt)
+                print('lines.find = ', lines)
 
-    pass
+
+
+            if len(lines[i]) > 1:
+
+
+                if lines[i][-1] == ' ' :
+                    lines[i] = lines[i][0:len(lines[i]) - 1]
+                    print('lines[i]cut = ', lines[i])
+
+                if lines[i].isspace():
+                    lines[i] = ''
+
+
+        print('lines.end', lines)
+    return '\n'.join(lines)
 
 
 if __name__ == '__main__':
-    assert strip_comments('apples, pears # and bananas\ngrapes\nbananas !apples', ['#', '!']) == \
-           'apples, pears\ngrapes\nbananas'
+    # assert strip_comments('apples, pears # and bananas\ngrapes\nbananas !apples', ['#', '!']) == \
+    #        'apples, pears\ngrapes\nbananas'
     # assert strip_comments('apples, pears # and bananas\ngrapes\navocado @apples',['@', '!']) == \
     #        'apples, pears # and bananas\ngrapes\navocado'
 
-    # assert strip_comments('#', ['#', '!']) == ' '
+    assert strip_comments('a #b\nc\nd $e f g', ['#', '$']) == 'a\nc\nd'
+    assert strip_comments(' a #b\nc\nd $e f g', ['#', '$']) == ' a\nc\nd'
+
+    # assert strip_comments('#', ['#', '!']) == ''
     # assert strip_comments('§', ['#', '§']) == '\n'
     # assert strip_comments('apples, pears  # and bananas\ngrapes\nbananas !apples', []) == \
     #        'apples, pears  # and bananas\ngrapes\nbananas !apples'
+    # assert strip_comments('\t,\ncherries pears apples strawberries apples\n? cherries ! bananas', [',', '=', '#', '@', '?', '-', '.']) == '\ncherries pears apples strawberries apples\n'
+    assert strip_comments("  ^ oranges\n, # ^ ^\npears strawberries '", ['@', '?', '-', '.', "'", '#', '!', '^']) == \
+           '\n,\npears strawberries'
