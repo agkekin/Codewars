@@ -1,5 +1,4 @@
 def warn_the_sheep(queue):
-
     num = 0
 
     for i, j in reversed(list(enumerate(queue))):
